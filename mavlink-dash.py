@@ -1,6 +1,7 @@
 import json
 import urllib.request
 import time
+import random
 import datetime as dt
 import plots
 import matplotlib.pyplot as plt
@@ -15,10 +16,21 @@ def getMavlink():
     jsonData = json.loads(data.decode(encoding))
     return dt.datetime.now().strftime('%H:%M:%S'), jsonData['ATTITUDE']['msg']['pitch']
 
+def makeData(i, time):
+    return i%time, round(random.uniform(0,2), 2)
+
 def getPlot(i, xs, ys):
-    x, y = getMavlink()
-    xs.append(x)
-    ys.append(y)
+    period = 10
+    
+    # FOR TESTING
+    plotNumber = i//period
+    x, y = makeData(i, period)
+    
+    if len(xs) < plotNumber+1:
+        xs.append([])
+        ys.append([])
+    xs[plotNumber].append(x)
+    ys[plotNumber].append(y)
     plots.animate(xs, ys, fig, ax)
 
 t = []

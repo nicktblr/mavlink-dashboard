@@ -11,7 +11,8 @@ def setup():
 def animate(xs, ys, fig, ax):
     # Draw x and y lists
     ax.clear()
-    ax.plot(xs, ys)
+    for n in range(0,len(xs)):
+        ax.plot(xs[n], ys[n])
 
     # Format plot
     plt.xticks(rotation=45, ha='right')
