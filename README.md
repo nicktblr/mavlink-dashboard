@@ -2,6 +2,12 @@
 
 Used for the real-time display and logging of custom MAVLINK packets coming from a drone. Intended to be used in conjunction with Mission Planner software. Developed as part of a capstone project at the University of Alberta.
 
+## In Progress
+
+* Datalogging to csv
+* Versatility in parsing Mavlink packets
+* Fault tolerance/error checking
+
 ## Installing
 
 git clone https://github.com/nicktblr/mavlink-dashboard.git
