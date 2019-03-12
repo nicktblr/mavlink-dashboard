@@ -17,10 +17,10 @@ def getMavlink():
     return dt.datetime.now().strftime('%H:%M:%S'), jsonData['ATTITUDE']['msg']['pitch']
 
 def makeData(i, time):
-    return i%time, round(random.uniform(0,2), 2)
+    return i%time, round(random.uniform(-90,90))
 
 def getPlot(i, xs, ys):
-    period = 10
+    period = 60
     
     # FOR TESTING
     plotNumber = i//period
@@ -36,6 +36,9 @@ def getPlot(i, xs, ys):
 t = []
 pitch = []
 
+plt.style.use('seaborn-darkgrid')
 fig, ax = plots.setup()
 animate = anim.FuncAnimation(fig, getPlot, fargs=(t,pitch), interval=1000)
 plt.show()
+
+
